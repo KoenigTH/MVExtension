@@ -1,5 +1,12 @@
 <%@ Page Language="VB" %>
 
+<%
+If Request("reset") = "1" Then
+	Session.Clear()
+	Response.Redirect(Request.RawUrl)
+End If
+%>
+
 <script runat="server">
 	Function GetSuggestedMapping(attrs As List(Of String), target As String) As String
 
@@ -75,6 +82,11 @@
 <div class="box">
 
 <h2>LDIF Upload & Mapping</h2>
+
+<form method="post" style="margin-bottom:20px;">
+    <input type="hidden" name="reset" value="1" />
+    <input type="submit" value="Reset" />
+</form>
 
 <%
 Dim showMapping As Boolean = False
