@@ -180,6 +180,8 @@ Dim attributeList As List(Of String) = CType(Session("attributes"), List(Of Stri
 	%>
 
 	<select name="telephoneNumber">
+		<option value="NA" <% If suggested_tel = "" Then %>selected<% End If %>>N/A</option>
+
 		<% For Each a In attributeList %>
 			<option value="<%= a %>" <% If a = suggested_tel Then %>selected<% End If %>>
 				<%= a %>
@@ -187,19 +189,21 @@ Dim attributeList As List(Of String) = CType(Session("attributes"), List(Of Stri
 		<% Next %>
 	</select>
 
+
     o - Organization ID / Organisations ID:
 	<%
 	Dim suggested_o As String = GetSuggestedMapping(attributeList, "o")
 	%>
 
 	<select name="o">
+		<option value="NA" <% If suggested_o = "" Then %>selected<% End If %>>N/A</option>
+
 		<% For Each a In attributeList %>
 			<option value="<%= a %>" <% If a = suggested_o Then %>selected<% End If %>>
 				<%= a %>
 			</option>
 		<% Next %>
 	</select>
-
 
     <br /><br />
     <input type="submit" value="Konvertieren" />
