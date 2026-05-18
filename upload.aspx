@@ -283,7 +283,7 @@ For Each entry In entries
 Next
 
 Dim newFile As String = "import.ldif"
-Dim path As String = Server.MapPath(".") & "\" & newFile
+Dim path As String = "C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData\NPO_LDIF-Import\" & newFile
 System.IO.File.WriteAllText(path, output.ToString(), System.Text.Encoding.UTF8)
 
 %>
