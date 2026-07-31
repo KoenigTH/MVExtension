@@ -1,9 +1,6 @@
-﻿Import-Module LithnetRMA
+﻿Add-PSSnapin FIMAutomation
 
-$cutoff = (Get-Date).AddDays(-90)
+$cutoffDate = (Get-Date).AddDays(-90)
 
-Search-Resources `
-    -ResourceType Request `
-    -AttributesToGet ObjectID, CreatedTime |
-    Where-Object {$_.CreatedTime -lt $cutoff} |
-    Remove-Resource
+Export-FIMConfig -CustomConfig "/Request[CreatedTime<'$($cutoffDate.ToString("s"))']" |
+Measure-Object
